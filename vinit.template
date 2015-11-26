@@ -1,0 +1,39 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:  vinit
+# Required-Start: $local_fs $remote_fs $network
+# Required-Stop:
+# Default-Start:   2 3 4 5
+# Default-Stop:
+# Short-Description: vinit stop/start
+# Description: vinit screen wrapper linked to vinit.template to start stop services.
+### END INIT INFO
+
+# #// executing user-id same as in vinit.bash
+USER="user_home"
+# #// directory name of service
+SNAME="dir_name"
+APATH="/home/$USER/$SNAME"
+if ! cd $APATH 2>/dev/null; then echo -e "INVALID path: $APATH - or not installed.\n" && exit 2 ;
+
+case "$1" in
+ start) cd $APATH ./vinit.bash start $2 $3 ;
+ ;;
+ stop) cd $APATH ./vinit.bash stop $2 $3 ;
+ ;;
+ update) cd $APATH ./vinit.bash update $2 $3 ;
+ ;;
+ status)
+	running="$(screen -ls $USER/) | grep $SNAME" ;
+	if [[ $running == *No* ]]; then echo -e "\nNO Running $SNAME instance(s)!\n" ; else echo "$scrps" ; fi ;
+ ;;
+ restart)
+	$0 stop $2 $3 ;
+	$0 start $2 $3 ;
+ ;;
+ *)
+	echo -e "\nUse: \n\t start\n\t stop\n\t restart\n\tupdate\n\t ^ argument\n" ;
+	exit 3 ;
+ ;;
+esac ;
+exit 0
