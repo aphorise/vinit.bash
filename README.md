@@ -73,7 +73,7 @@ This may be any other executable scripts (eg: `.sh`) that's executed as a backgr
 
 ## configuration, `screen` & `sysvinit`
 
-Pertinent required beyond a demonstration are in the header of `./vinit.bash`:
+Pertinent settings that are required for use beyond a demonstration can be found in the header of `./vinit.bash`:
 ```
 USER="$(whoami)" ;
 SNAME="vinit.bash" ;
