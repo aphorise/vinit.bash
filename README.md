@@ -38,7 +38,7 @@ A depiction of the script:
 
 This script is intended as a complimentary [*__`screen`__*] wrapper for a process to be launched in (eg via: `sudo service my_service`) and later stopped, forced restarted (aka: [*~~__`forever`__~~*]) where exited unexpectedly and where certain CPU limits may be exceeded for too long.
 
-Whats demonstrated is the monitor of single (1x) CPU process on interval where over-consumption (< `99.1` `%`) / infinite loop is assumed over a certain limit and a subsequent `kill` & restarted is attempted.
+Whats demonstrated is the monitor of single (1x) CPU process on interval where over-consumption (< `99.1` `%`) / infinite loop is assumed over a certain limit and a subsequent `kill` & restart is attempted.
 
 Expressed threshold values in `./vinit.bash` are as follows:
 
@@ -50,7 +50,7 @@ Expressed threshold values in `./vinit.bash` are as follows:
 ```
 
 
-Some other limits / tolerances have also been left in place specific to potential notification schemes such as e-mail or sms for example; these include:
+Some other limits / tolerances have also been left that are specific to potential notification schemes such as e-mail or sms; these include:
 ```
     tNoticeReset=240 ; # #// Total seconds after which notification should reset.
     tNoticeGap=15 ; # #// Gap between notification in above time.
